@@ -1,7 +1,6 @@
 package com.company;
 
-import com.sun.javafx.scene.traversal.Direction;
-
+import com.company.Direction;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -12,27 +11,57 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Game extends JFrame {
-    public static int  placeOfBattleUser[][] = new int [10][10];
-    public static int  placeOfBattle[][] = new int [10][10];
+public class Game extends JFrame implements TCPConnectionListener {
+    public static Ship  placeOfBattleUser[][] =
+            {
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+            };
+    public static Ship  placeOfBattleEnemy[][] =
+            {
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+            };
 
     public static final int widthCell = 36;
     public static final int heightCell = 36;
-    private JPanel jPanel;
+    private JPanel jPanel = null;
 
-    private JButton btnPvpLocal;
-    private JButton btnPvP;
-    private JButton btnPvS;
-    private JButton btnSettings;
+    private JButton btnPvpLocal = null;
+    private JButton btnPvP = null;
+    private JButton btnPvS = null;
+    private JButton btnSettings = null;
 
-    private MyEvents events;
+    private MyEvents events = null;
 
+    public static Player playe1 = new Player();
     private Coord coord;
     private Coord sizeWindow = new Coord(1060, 800);
 
-    private final Coord coordWaterPolo1 = new Coord(1, 5);
-    private final Coord coordWaterPolo2 = new Coord(coordWaterPolo1.x+16, coordWaterPolo1.y);
+    public static Coord coordWaterPolo1 = new Coord(1, 5);
+    public static Coord coordWaterPolo2 = new Coord(coordWaterPolo1.x+16, coordWaterPolo1.y);
     private final Coord coordVS = new Coord( ((coordWaterPolo1.x+12)*widthCell-7), ((coordWaterPolo1.y+4)*heightCell) );
+
+    private static boolean isServer = false;
+    /*==========================Begin block checked============================*/
+    private static boolean isSetShips = false;
+    /*===========================End block checked=============================*/
 
     public Game(){
         this.initPanel();
@@ -51,6 +80,12 @@ public class Game extends JFrame {
     }
 
     private void initPanel(){
+        jPanel = null;
+        btnPvpLocal = null;
+        btnPvP = null;
+        btnPvS = null;
+        btnSettings = null;
+        events = null;
         events = new MyEvents();
         jPanel = new JPanel(){
             @Override
@@ -58,16 +93,17 @@ public class Game extends JFrame {
                 super.paintComponent(g);
                 g.drawImage(getImage("background1.png"), 0, 0, this);
 
-                DrawWaterPolo(new Coord(coordWaterPolo1.x,coordWaterPolo1.y), g);
-                DrawBeaten(new Coord(coordWaterPolo1.x, coordWaterPolo1.y), g);
-
-                DrawWaterPolo(new Coord(coordWaterPolo2.x,coordWaterPolo2.y), g);
-                DrawBeaten(new Coord(coordWaterPolo2.x, coordWaterPolo2.y), g);
+                DrawWaterPolo(coordWaterPolo1, g);
+                DrawShipsOnWaterPolo(new Coord(coordWaterPolo1.x, coordWaterPolo1.y), g);
+                //DrawBeaten(coordWaterPolo1, g);
+                DrawWaterPolo(coordWaterPolo2, g);
+                //DrawBeaten(coordWaterPolo2, g);
 
                 g.drawImage(getImage("VS.png"), coordVS.x, coordVS.y, 108, 72,this);
 
                 DrawMainButtons(new Coord(1,1));
                 DrawShips(new Coord(4, 3), g);
+                repaint();
             }
 
         };
@@ -85,7 +121,6 @@ public class Game extends JFrame {
 
 
         add(jPanel);
-
     }
 
     public static Image getImage(String name){
@@ -93,7 +128,25 @@ public class Game extends JFrame {
         Image gras = Toolkit.getDefaultToolkit().getImage(filename);
         return gras;
     }
-
+    public static void DrawShipsOnWaterPolo(Coord coords, Graphics g){
+        for (int x = coords.x, i = 0; x < coords.x+10; x++, i++){
+            for (int y = coords.y, j = 0; y < coords.y+10; y++, j++) {
+                if(placeOfBattleUser[i][j].isHere){
+                    if(placeOfBattleUser[i][j].coord != null)
+                        DrawOneShips(placeOfBattleUser[i][j].coord, g);
+                        //g.drawImage(getImage("slip.png"), x * 36, y*36, null);
+                }
+            }
+        }
+    }
+    public static void DrawShipsOnWaterPolo(Coord coords, Graphics g, int tmp){
+        for (int x = coords.x+1, i = 0; x < coords.x+11; x++, i++){
+            for (int y = coords.y+1, j = 0; y < coords.y+11; y++, j++) {
+                if(placeOfBattleUser[i][j].isHere)
+                    g.drawImage(getImage("ship.png"), (placeOfBattleUser[i][j].coord.x) * 36, (placeOfBattleUser[i][j].coord.y-2)*36, null);
+            }
+        }
+    }
     private void DrawBeaten(Coord coords, Graphics g){
         for (int x = coords.x+1; x < coords.x+11; x++){
             for (int y = coords.y+1; y < coords.y+11; y++) {
@@ -110,115 +163,129 @@ public class Game extends JFrame {
         g.drawImage(getImage("waterpolo.png"), coords.x*widthCell, coords.y*heightCell, 500, 500,null);
     }
     private void DrawMainButtons(Coord coords){
+
         for(int x = coords.x, i=1; x <= 28; x +=7, i++) {
-            BufferedImage img = null;
-            try {
-                img = ImageIO.read(new File("E://img/buttons/button"+i+".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            if(btnPvpLocal == null || btnPvP == null || btnPvS == null || btnSettings == null) {
 
-            JButton button = new JButton(new ImageIcon(img));
-
-            int _x = (x) * widthCell;
-            int _y = (coords.y) * heightCell;
-            button.setBorderPainted(false);
-            button.setFocusPainted(false);
-            button.setContentAreaFilled(false);
-            if(i != 4)
-                button.setEnabled(false);
-            if( i == 1)
-                button.setEnabled(true);
-            button.setBounds(_x, _y, 215, 37);
-
-            switch (i){
-                case 1 :
-                    if(btnPvpLocal == null)
-                        btnPvpLocal = button; break;
-                case 2 :
-                    if(btnPvP == null)
-                        btnPvP = button; break;
-                case 3 :
-                    if(btnPvS == null)
-                        btnPvS = button; break;
-                case 4 :
-                    if(btnSettings == null)
-                        btnSettings = button; break;
-
-                default:
-                    btnSettings = null;
-                    btnPvS = null;
-                    btnPvP = null;
-                    btnPvpLocal = null;
-                    break;
-            }
-
-            button.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-
+                Image img = null;
+                try {
+                    img = ImageIO.read(new File("E://img/buttons/button"+i+".png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    if( System.identityHashCode(btnSettings) == System.identityHashCode(button)){
-                        if(btnSettings.isEnabled()) {
-                            btnSettingsEvent();
-                        }
-                    } else if( System.identityHashCode(btnPvS) == System.identityHashCode(button)){
-                        if(btnPvS.isEnabled()) {
-                            btnPvSEvent();
+                JButton button = new JButton(new ImageIcon(img));
+
+                int _x = (x) * widthCell;
+                int _y = (coords.y) * heightCell;
+                button.setBorderPainted(false);
+                button.setFocusPainted(false);
+                button.setContentAreaFilled(false);
+                if (i != 4)
+                    button.setEnabled(false);
+                if (i == 1 && Player.name != "" && Player.ipAddress != "")
+                    button.setEnabled(true);
+                button.setBounds(_x, _y, 215, 37);
+
+                switch (i) {
+                    case 1:
+                        if (btnPvpLocal == null)
+                            btnPvpLocal = button;
+                        break;
+                    case 2:
+                        if (btnPvP == null)
+                            btnPvP = button;
+                        break;
+                    case 3:
+                        if (btnPvS == null)
+                            btnPvS = button;
+                        break;
+                    case 4:
+                        if (btnSettings == null)
+                            btnSettings = button;
+                        break;
+
+                    default:
+                        btnSettings = null;
+                        btnPvS = null;
+                        btnPvP = null;
+                        btnPvpLocal = null;
+                        break;
+                }
+
+                button.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (System.identityHashCode(btnSettings) == System.identityHashCode(button)) {
+                            if (btnSettings.isEnabled()) {
+                                btnSettingsEvent();
                             }
-                    } else if( System.identityHashCode(btnPvP) == System.identityHashCode(button)){
-                        if(btnPvP.isEnabled()) {
-                            btnPvPEvent();
+                        } else if (System.identityHashCode(btnPvS) == System.identityHashCode(button)) {
+                            if (btnPvS.isEnabled()) {
+                                btnPvSEvent();
+                            }
+                        } else if (System.identityHashCode(btnPvP) == System.identityHashCode(button)) {
+                            if (btnPvP.isEnabled()) {
+                                btnPvPEvent();
+                            }
+                        } else if (System.identityHashCode(btnPvpLocal) == System.identityHashCode(button)) {
+                            if (btnPvpLocal.isEnabled()) {
+                                btnPvpLocalEvent();
+                            }
                         }
-                    } else if( System.identityHashCode(btnPvpLocal) == System.identityHashCode(button)){
-                        if(btnPvpLocal.isEnabled()) {
-                            btnPvpLocalEvent();
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        if (button.isEnabled()) {
+                            button.setLocation(_x + 10, _y + 5);
+                            button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                            jPanel.repaint();
+                        }
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        if (button.isEnabled()) {
+                            button.setLocation(_x, _y);
+                            jPanel.repaint();
                         }
                     }
-
-                }
-                @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    if(button.isEnabled()) {
-                        button.setLocation(_x + 10, _y + 5);
-                        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                        jPanel.repaint();
-                    }
-
-                }
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    if(button.isEnabled()) {
-                        button.setLocation(_x, _y);
-                        jPanel.repaint();
-                    }
-                }
-            });
-            jPanel.add(button);
+                });
+                jPanel.add(button);
+                jPanel.repaint();
+            }
         }
     }
     /*------------------ Draw Ships -------------------------*/
     public static void DrawShips(Coord coords, Graphics g){
-        DrawOneShips(coords, g);
-        DrawSymbols(new Coord(coords.x+1,coords.y), 4, g);
+        if(!isSetShips) {
+            DrawOneShips(new Coord(coords.x, coords.y), g);
+            DrawSymbols(new Coord(coords.x + 1, coords.y), 4, g);
 
-        DrawTwoShips(Direction.RIGHT, coords, g);
-        DrawSymbols(new Coord(coords.x+6,coords.y), 3, g);
+            DrawTwoShips(Direction.RIGHT, new Coord(coords.x, coords.y), g);
+            DrawSymbols(new Coord(coords.x + 6, coords.y), 3, g);
 
-        DrawThreeShips(Direction.RIGHT, coords, g);
-        DrawSymbols(new Coord(coords.x+12,coords.y), 2, g);
+            DrawThreeShips(Direction.RIGHT, new Coord(coords.x, coords.y), g);
+            DrawSymbols(new Coord(coords.x + 12, coords.y), 2, g);
 
-        DrawFourShips(Direction.RIGHT, coords, g);
-        DrawSymbols(new Coord(coords.x+19,coords.y), 1, g);
+            DrawFourShips(Direction.RIGHT, new Coord(coords.x, coords.y), g);
+            DrawSymbols(new Coord(coords.x + 19, coords.y), 1, g);
+        }
     }
     public static void DrawOneShips(Coord coords, Graphics g){
-        g.drawImage(getImage("ship.png"), coords.x*widthCell, coords.y*heightCell, 35, 35,null);
+        g.drawImage(getImage("ship.png"), (coords.x)*widthCell, (coords.y)*heightCell, 35, 35,null);
     }
     public static void DrawTwoShips(Direction direction, Coord coords, Graphics g){
         if(direction == Direction.RIGHT) {
@@ -288,6 +355,18 @@ public class Game extends JFrame {
     }
     /* ----------------------------- Main methods ----------------------------*/
     private void btnPvpLocalEvent() {
+        if(isServer)
+            new PVPLocal();
+        else {
+            try {
+                TCPConnection tcpConnection = new TCPConnection(this, "127.0.0.1", 8189);
+                tcpConnection.SendData("Hello world!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
     }
 
     private void btnPvPEvent() {
@@ -297,6 +376,26 @@ public class Game extends JFrame {
     }
 
     private void btnSettingsEvent(){
-        new Settings();
+        new Settings().setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }
+
+    @Override
+    public synchronized void onConnectionReady(TCPConnection tcpConnection) {
+        System.out.println("Connected!");
+    }
+
+    @Override
+    public synchronized void onReceive(TCPConnection tcpConnection, String value) {
+        System.out.println(value);
+    }
+
+    @Override
+    public synchronized void onDisconnect(TCPConnection tcpConnection) {
+        System.out.println("Disconnected!");
+    }
+
+    @Override
+    public synchronized void onExeption(TCPConnection tcpConnection, Exception ex) {
+        System.out.println("TCPConnection exeption: " + ex);
     }
 }

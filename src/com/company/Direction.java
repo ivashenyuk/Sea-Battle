@@ -1,8 +1,7 @@
 package com.company;
 
+import java.util.Optional;
+
 public enum Direction {
-    UP,
-    DOUN,
-    LEFT,
-    RIGHT
+    RIGHT, DOWN, LEFT, UP;
 }
