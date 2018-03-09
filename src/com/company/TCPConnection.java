@@ -6,7 +6,7 @@ import java.nio.charset.Charset;
 
 public class TCPConnection {
     private final Socket socket;
-    private final Thread rxThread;
+    public final Thread rxThread;
     private final TCPConnectionListener eventListener;
     private BufferedReader in;
     private BufferedWriter out;
@@ -15,45 +15,48 @@ public class TCPConnection {
         this(eventListener, new Socket(ipAddress, port));
     }
 
-    public TCPConnection(TCPConnectionListener eventListener, Socket socket) throws IOException{
+    public TCPConnection(TCPConnectionListener eventListener, Socket socket) throws IOException {
+        System.out.println("lol");
         this.socket = socket;
         this.eventListener = eventListener;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream(), Charset.forName("UTF-8")));
         this.out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), Charset.forName("UTF-8")));
-        this.rxThread = new Thread(new Runnable() {
+        rxThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    eventListener.onConnectionReady(TCPConnection.this);
-                    while (!rxThread.isInterrupted()){
+                    TCPConnection.this.eventListener.onConnectionReady(TCPConnection.this);
+                    while (!rxThread.isInterrupted()) {
                         String msg = in.readLine();
-                        eventListener.onReceive(TCPConnection.this, msg);
+                        TCPConnection.this.eventListener.onReceive(TCPConnection.this, msg);
                     }
-
-                } catch (IOException ex){
-                    eventListener.onExeption(TCPConnection.this, ex);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 } finally {
-                    eventListener.onDisconnect(TCPConnection.this);
+                    TCPConnection.this.eventListener.onDisconnect(TCPConnection.this);
                 }
             }
         });
-        this.rxThread.start();
+        rxThread.start();
+
     }
-    public synchronized void SendData(String msg){
+
+    public synchronized void SendData(String placeOfBattleUser) {
         try {
-            out.write(msg + "\r\n");
+            out.write(placeOfBattleUser + "\r\n");
             out.flush();
         } catch (IOException e) {
-            eventListener.onExeption(TCPConnection.this, e);
+            this.eventListener.onExeption(TCPConnection.this, e);
             Disconnect();
         }
     }
-    public synchronized void Disconnect(){
+
+    public synchronized void Disconnect() {
         rxThread.interrupt();
         try {
             socket.close();
         } catch (IOException e) {
-            eventListener.onExeption(TCPConnection.this, e);
+            this.eventListener.onExeption(TCPConnection.this, e);
         }
     }
 

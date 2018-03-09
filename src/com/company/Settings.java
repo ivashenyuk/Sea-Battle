@@ -1,13 +1,16 @@
 package com.company;
 
-import javafx.scene.layout.Border;
-
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Settings extends JFrame {
     private Coord sizeWindow = new Coord(825, 600);
+    public static String howSelect = "";
 
     private JPanel jPanel;
     private boolean isPressedsButtons[] = { false, false, false, false};
@@ -331,15 +334,41 @@ public class Settings extends JFrame {
         ipForConnection.setBounds(0, 215 , 321, 35);
         ipForConnection.setMaximumSize(new Dimension(321, 35));
         //Player.ipAddress = ipForConnection.getText();
-        System.out.println(Player.name);
         //jPanel.add(ipForConnection);
 
         JRadioButton serverRadioButton = new JRadioButton();
         JRadioButton clientRadioButton = new JRadioButton();
-        serverRadioButton.setSelected(true);
+        serverRadioButton.setActionCommand("server");
+        clientRadioButton.setActionCommand("client");
+
         group = new ButtonGroup();
         group.add(serverRadioButton);
         group.add(clientRadioButton);
+        howSelect = "server";
+        serverRadioButton.setSelected(true);
+        ChangeListener changeListener = new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+
+                JRadioButton radioButton = (JRadioButton)e.getSource();
+                if(radioButton == serverRadioButton && radioButton.isSelected()){
+                    howSelect = "server";
+                } else  if(radioButton == clientRadioButton && radioButton.isSelected()){
+                    howSelect = "client";
+                }
+            }
+        };
+        if( howSelect == "client") {
+            clientRadioButton.setSelected(true);
+            serverRadioButton.setSelected(false);
+
+        } else if(howSelect == "server") {
+            serverRadioButton.setSelected(true);
+            clientRadioButton.setSelected(false);
+
+        }
+        serverRadioButton.addChangeListener(changeListener);
+        clientRadioButton.addChangeListener(changeListener);
 
 
         JLabel lableServer = new JLabel();

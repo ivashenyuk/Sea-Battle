@@ -4,28 +4,31 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
-public class PVPLocal implements TCPConnectionListener{
+public class PVPLocal extends Thread implements TCPConnectionListener {
 
     private final ArrayList<TCPConnection> connections = new ArrayList<TCPConnection>();
 
-    public PVPLocal(){
+    public PVPLocal() {
         System.out.println("Server is running...");
-        try(ServerSocket serverSocket = new ServerSocket(8189)){
-            while (true){
-                try{
-                    new TCPConnection(this, serverSocket.accept());
-                } catch(IOException ex) {
-                    System.out.println("TCPConnection exeption: " + ex);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (ServerSocket serverSocket = new ServerSocket(8189)) {
+                    while (true) {
+                        Thread.sleep(500);
+                        new TCPConnection(PVPLocal.this, serverSocket.accept());
+                    }
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-
             }
-
-        } catch (IOException ex){
-            throw new RuntimeException(ex);
-        }
-
+        });
+       thread.setDaemon(true);
+       thread.start();
     }
-
 
     @Override
     public synchronized void onConnectionReady(TCPConnection tcpConnection) {
@@ -34,7 +37,7 @@ public class PVPLocal implements TCPConnectionListener{
 
     @Override
     public synchronized void onReceive(TCPConnection tcpConnection, String value) {
-        SendMsgAllCliant(value);
+        SendMsgAllClient(value);
     }
 
     @Override
@@ -47,11 +50,15 @@ public class PVPLocal implements TCPConnectionListener{
         System.out.println("TCPConnection exeption: " + ex);
     }
 
-    private void SendMsgAllCliant(String msg){
+    private void SendMsgAllClient(String msg) {
         System.out.println(msg);
         final int size = connections.size();
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             connections.get(i).SendData(msg);
         }
+    }
+
+    private void Run(){
+
     }
 }
