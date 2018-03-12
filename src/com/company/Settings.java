@@ -266,6 +266,7 @@ public class Settings extends JFrame {
 
 
                 Game.DrawShipsOnWaterPolo(new Coord(Game.placeOfBattleUser[0][0].coord.x, Game.placeOfBattleUser[0][0].coord.y), g, 1);
+                //Game.DrawShipsOnWaterPolo(new Coord(Game.placeOfBattleEnemy[0][0].coord.x, Game.placeOfBattleEnemy[0][0].coord.y), g, 1);
 
                 Point point = MouseInfo.getPointerInfo().getLocation();
                 SwingUtilities.convertPointFromScreen(point, this);
@@ -273,7 +274,7 @@ public class Settings extends JFrame {
                 _positionMouseY = point.y;
 
                 if(isPressedMouseLeftButton){
-                    if(CheckSizeShip() == 1 && (Game.playe1.countShip1 > 0)) {
+                    if(CheckSizeShip() == 1 && (Game.playe1.countShip1 > 0 && isInWaterPoloShip())) {
                         Game.DrawOneShips(new Coord((_positionMouseX / Game.widthCell), (_positionMouseY / Game.heightCell)), g);
                     } else if(CheckSizeShip() == 2 && (Game.playe1.countShip2 > 0 && isInWaterPoloShip())) {
                         Game.DrawTwoShips(direction, new Coord((_positionMouseX / Game.widthCell-4), (_positionMouseY / Game.heightCell)), g);
@@ -283,9 +284,6 @@ public class Settings extends JFrame {
                         Game.DrawFourShips(direction, new Coord((_positionMouseX / Game.widthCell-15), (_positionMouseY / Game.heightCell)), g);
                     }
                 }
-
-
-
                repaint();
             }
         };
@@ -406,7 +404,7 @@ public class Settings extends JFrame {
         lableIP.setBackground(new Color(255,255,255, 10));
         lableIP.setForeground(Color.RED);
         lableIP.setBorder(BorderFactory.createEmptyBorder());
-
+        Player.ipAddress = "127.0.0.1:8189";
 
         //створюємо вкладку
         JTabbedPane tabby = new JTabbedPane(JTabbedPane.TOP);

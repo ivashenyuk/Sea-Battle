@@ -1,12 +1,15 @@
 package com.company;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
 public class PVPLocal extends Thread implements TCPConnectionListener {
 
-    private final ArrayList<TCPConnection> connections = new ArrayList<TCPConnection>();
+    private static final ArrayList<TCPConnection> connections = new ArrayList<TCPConnection>();
+    private static boolean isReceiveShips = false;
 
     public PVPLocal() {
         System.out.println("Server is running...");
@@ -14,20 +17,17 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
             @Override
             public void run() {
                 try (ServerSocket serverSocket = new ServerSocket(8189)) {
-                    while (true) {
-                        Thread.sleep(500);
-                        new TCPConnection(PVPLocal.this, serverSocket.accept());
-                    }
-
+                    // while (true) {
+                    new TCPConnection(PVPLocal.this, serverSocket.accept());
+                    //}
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
         });
-       thread.setDaemon(true);
-       thread.start();
+        thread.setDaemon(true);
+        thread.start();
+
     }
 
     @Override
@@ -36,8 +36,28 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
     }
 
     @Override
-    public synchronized void onReceive(TCPConnection tcpConnection, String value) {
-        SendMsgAllClient(value);
+    public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
+        enemyOrUser -= 48;
+        Gson gson = new Gson();
+
+        if (user != "") {
+            if (enemyOrUser == 1) {
+                if (isReceiveShips) {
+                    Game.placeOfBattleEnemy = gson.fromJson("[" + user, Ship[][].class);
+                } else {
+                    isReceiveShips = true;
+                    Game.isReceiveShips = true;
+                    Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+                }
+            } else if (enemyOrUser == 0) {
+                Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
+                Game.jPanel.repaint();
+            }
+        }
+        //if(Game.placeOfBattleUser != null) {
+        SendMsgAllClient(gson.toJson(Game.placeOfBattleUser), 1);
+        SendMsgAllClient(gson.toJson(Game.placeOfBattleEnemy), 0);
+        //}
     }
 
     @Override
@@ -50,15 +70,10 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
         System.out.println("TCPConnection exeption: " + ex);
     }
 
-    private void SendMsgAllClient(String msg) {
-        System.out.println(msg);
+    public static void SendMsgAllClient(String enemy, int enemyOrUser) {
         final int size = connections.size();
         for (int i = 0; i < size; i++) {
-            connections.get(i).SendData(msg);
+            connections.get(i).SendData(enemy, enemyOrUser);
         }
-    }
-
-    private void Run(){
-
     }
 }

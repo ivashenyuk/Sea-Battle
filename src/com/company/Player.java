@@ -10,11 +10,12 @@ public class Player {
     public static Ship  placeOfBattleEnemy[][];
     public static Ship  placeOfBattleUser[][];
 
-    public  Player(String name, int countShip1, int countShip2, int countShip3, int countShip4){
-        this.name = name;
+    public  Player(String _name, int countShip1, int countShip2, int countShip3, int countShip4){
+        name = _name;
     }
     public Player(){
-        this.name = "Player1";
+        name = "Player1";
+        ipAddress = "127.0.0.1:8189";
         this.countShip1 = 4;
         this.countShip2 = 3;
         this.countShip3 = 2;

@@ -16,7 +16,6 @@ public class TCPConnection {
     }
 
     public TCPConnection(TCPConnectionListener eventListener, Socket socket) throws IOException {
-        System.out.println("lol");
         this.socket = socket;
         this.eventListener = eventListener;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream(), Charset.forName("UTF-8")));
@@ -25,10 +24,12 @@ public class TCPConnection {
             @Override
             public void run() {
                 try {
+
                     TCPConnection.this.eventListener.onConnectionReady(TCPConnection.this);
                     while (!rxThread.isInterrupted()) {
-                        String msg = in.readLine();
-                        TCPConnection.this.eventListener.onReceive(TCPConnection.this, msg);
+                        String user = in.readLine();
+                        int enemyOrUser = in.read();
+                        TCPConnection.this.eventListener.onReceive(TCPConnection.this, user, enemyOrUser);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -41,16 +42,15 @@ public class TCPConnection {
 
     }
 
-    public synchronized void SendData(String placeOfBattleUser) {
+    public synchronized void SendData(String enemy, int enemyOrUser) {
         try {
-            out.write(placeOfBattleUser + "\r\n");
+            out.write(enemy+ "\r\n" + enemyOrUser + "\r\n");
             out.flush();
         } catch (IOException e) {
             this.eventListener.onExeption(TCPConnection.this, e);
             Disconnect();
         }
     }
-
     public synchronized void Disconnect() {
         rxThread.interrupt();
         try {
