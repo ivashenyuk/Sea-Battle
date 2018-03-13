@@ -404,7 +404,7 @@ public class Settings extends JFrame {
         lableIP.setBackground(new Color(255,255,255, 10));
         lableIP.setForeground(Color.RED);
         lableIP.setBorder(BorderFactory.createEmptyBorder());
-        Player.ipAddress = "127.0.0.1:8189";
+        //Player.ipAddress = "127.0.0.1:8189";
 
         //створюємо вкладку
         JTabbedPane tabby = new JTabbedPane(JTabbedPane.TOP);

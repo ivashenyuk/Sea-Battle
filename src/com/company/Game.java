@@ -42,6 +42,7 @@ public class Game extends JFrame implements TCPConnectionListener {
     public static final int widthCell = 36;
     public static final int heightCell = 36;
     public static JPanel jPanel = null;
+    public static Player playe1 = new Player();
 
     private JButton btnPvpLocal = null;
     private JButton btnPvP = null;
@@ -50,7 +51,6 @@ public class Game extends JFrame implements TCPConnectionListener {
     public static TCPConnection tcpConnection = null;
     private MyEvents events = null;
 
-    public static Player playe1 = new Player();
     private Coord coord;
     private Coord sizeWindow = new Coord(1060, 800);
 
@@ -60,6 +60,7 @@ public class Game extends JFrame implements TCPConnectionListener {
 
     private static boolean isServer = false;
     private JLabel lableServer;
+    private JLabel lableCongratulation;
 
     int _positionMouseX = 0;
     int _positionMouseY = 0;
@@ -67,8 +68,10 @@ public class Game extends JFrame implements TCPConnectionListener {
     /*==========================Begin block checked============================*/
     private static boolean isSetShips = false;
     public static boolean isReceiveShips = false;
-    public static boolean isSend = false;
+    public static boolean stepIsTrue = true;
     /*===========================End block checked=============================*/
+    public static Player playerUser = null;
+    public static Player playerEnemy = null;
 
     public Game() {
         this.initPanel();
@@ -114,9 +117,31 @@ public class Game extends JFrame implements TCPConnectionListener {
 
                 DrawBeatenEnemy(coordWaterPolo2, g);
                 DrawBeatenUser(coordWaterPolo1, g);
+
+                if (lableCongratulation == null)
+                    lableCongratulation = new JLabel();
+                if (playerUser != null && playerEnemy != null) {
+                    lableCongratulation.setText("You are playing...");
+                    if (playerUser.allShips == HowMathIsBeatenUser()) {
+                        lableCongratulation.setText("You lose! You failed!");
+                        stepIsTrue = false;
+                        tcpConnection = null;
+                    } else if (playerEnemy.allShips == HowMathIsBeatenEnemy()) {
+                        lableCongratulation.setText("Congratulation, You wined!");
+                        stepIsTrue = false;
+                        tcpConnection = null;
+                    }
+                }
+                lableCongratulation.setFont(new Font("Segoe Script", Font.BOLD, 32));
+                lableCongratulation.setEnabled(true);
+                lableCongratulation.setBackground(new Color(255, 255, 255, 10));
+                lableCongratulation.setForeground(Color.RED);
+                lableCongratulation.setBorder(BorderFactory.createEmptyBorder());
+                lableCongratulation.setBounds(40, 605, 500, 50);
+                add(lableCongratulation);
+
                 repaint();
             }
-
         };
         jPanel.setLayout(null);
         jPanel.setSize(1200, 800);
@@ -124,13 +149,7 @@ public class Game extends JFrame implements TCPConnectionListener {
         jPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                isSend = true;
                 FireOnShip(e);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                isSend = false;
             }
         });
 
@@ -144,6 +163,7 @@ public class Game extends JFrame implements TCPConnectionListener {
         lableServer.setBorder(BorderFactory.createEmptyBorder());
         lableServer.setBounds(400, 700, 100, 50);
         jPanel.add(lableServer);
+
 
         add(jPanel);
     }
@@ -232,7 +252,7 @@ public class Game extends JFrame implements TCPConnectionListener {
                 button.setContentAreaFilled(false);
                 if (i != 4)
                     button.setEnabled(false);
-                if (i == 1 && Player.ipAddress != "")
+                if (i == 1 /*&& Player.ipAddress != ""*/)
                     button.setEnabled(true);
                 button.setBounds(_x, _y, 215, 37);
 
@@ -410,6 +430,7 @@ public class Game extends JFrame implements TCPConnectionListener {
     private synchronized void btnPvpLocalEvent() {
         if (Settings.group != null) {
             if (Settings.howSelect == "server") {
+                Game.stepIsTrue = false;
                 Thread threadServer = new Thread(new PVPLocal());
                 threadServer.setDaemon(true);
                 threadServer.start();
@@ -460,6 +481,11 @@ public class Game extends JFrame implements TCPConnectionListener {
             } else {
                 isReceiveShips = true;
                 Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+                if (playerUser == null && playerEnemy == null) {
+                    playerUser = new Player();
+                    playerEnemy = new Player();
+                    Game.jPanel.repaint();
+                }
             }
         } else if (enemyOrUser == 0) {
             Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
@@ -469,23 +495,28 @@ public class Game extends JFrame implements TCPConnectionListener {
                 @Override
                 public void run() {
                     while (true) {
-                        System.out.println("before send");
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        System.out.println("sending...");
-                            tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                        tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
                     }
                 }
             });
-
             sentSreverData.setDaemon(true);
             sentSreverData.start();
         }
 
         Game.jPanel.repaint();
+    }
+
+    @Override
+    public synchronized void onReceive1(TCPConnection tcpConnection, int step) {
+        if (step != 0)
+            Game.stepIsTrue = true;
+        else
+            Game.stepIsTrue = false;
     }
 
     @Override
@@ -499,22 +530,34 @@ public class Game extends JFrame implements TCPConnectionListener {
     }
 
     private void FireOnShip(MouseEvent e) {
-        _positionMouseX = e.getX();
-        _positionMouseY = e.getY();
-        int _y = (_positionMouseY / Game.heightCell);
-        int _x = (_positionMouseX / Game.widthCell);
-        if (isInWaterPoloShip(_x, _y)) {
-            Gson gson = new Gson();
+        if (stepIsTrue) {
+            _positionMouseX = e.getX();
+            _positionMouseY = e.getY();
+            int _y = (_positionMouseY / Game.heightCell);
+            int _x = (_positionMouseX / Game.widthCell);
             if (!CheckPlaceForShip(_x, _y)) {
-                placeOfBattleEnemy[_x - 18][_y - 6].slip = true;
-            } else {
-                placeOfBattleEnemy[_x - 18][_y - 6].beaten = true;
-            }
-            if (isReceiveShips) {
+                stepIsTrue = false;
+                SetCircleSlip();
                 if (tcpConnection != null) {
-                    tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                    tcpConnection.YourStep(4);
                     if (Settings.howSelect == "server") {
-                        PVPLocal.SendMsgAllClient(gson.toJson(placeOfBattleEnemy), 0);
+                        PVPLocal.SendYourStep(4);
+                    }
+                }
+            }
+            if (isInWaterPoloShip(_x, _y)) {
+                Gson gson = new Gson();
+                if (!CheckPlaceForShip(_x, _y)) {
+                    placeOfBattleEnemy[_x - 18][_y - 6].slip = true;
+                } else {
+                    placeOfBattleEnemy[_x - 18][_y - 6].beaten = true;
+                }
+                if (isReceiveShips) {
+                    if (tcpConnection != null) {
+                        tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                        if (Settings.howSelect == "server") {
+                            PVPLocal.SendMsgAllClient(gson.toJson(placeOfBattleEnemy), 0);
+                        }
                     }
                 }
             }
@@ -530,8 +573,53 @@ public class Game extends JFrame implements TCPConnectionListener {
     }
 
     private boolean CheckPlaceForShip(int indexX, int indexY) {
+        //if (indexX - 18 >= 0 && indexY - 6 >= 0 && indexX - 18 < 10 && indexY - 6 < 10)
         if (Game.placeOfBattleEnemy[indexX - 18][indexY - 6].isHere)
             return true;
         return false;
+    }
+
+    private void SetCircleSlip() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (placeOfBattleEnemy[i][j].beaten) {
+                    SetCircleSlip(new Coord(i, j));
+                }
+            }
+        }
+    }
+
+    private void SetCircleSlip(Coord coord) {
+        for (int x = coord.x - 1; x <= coord.x + 1; x++) {
+            for (int y = coord.y - 1; y <= coord.y + 1; y++) {
+                if (x >= 0 && x < 10 &&
+                        y >= 0 && y < 10 &&
+                        !CheckPlaceForShip(x + 18, y + 6)) {
+                    placeOfBattleEnemy[x][y].slip = true;
+                }
+            }
+        }
+    }
+
+    private int HowMathIsBeatenEnemy() {
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (placeOfBattleEnemy[i][j].beaten)
+                    count++;
+            }
+        }
+        return count;
+    }
+
+    private int HowMathIsBeatenUser() {
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (placeOfBattleUser[i][j].beaten)
+                    count++;
+            }
+        }
+        return count;
     }
 }

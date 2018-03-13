@@ -39,25 +39,36 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
     public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
         enemyOrUser -= 48;
         Gson gson = new Gson();
-
-        if (user != "") {
-            if (enemyOrUser == 1) {
-                if (isReceiveShips) {
+        if (enemyOrUser == 1) {
+            if (isReceiveShips) {
                     Game.placeOfBattleEnemy = gson.fromJson("[" + user, Ship[][].class);
-                } else {
-                    isReceiveShips = true;
-                    Game.isReceiveShips = true;
-                    Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+            } else {
+                isReceiveShips = true;
+                Game.isReceiveShips = true;
+                Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+                if(Game.playerUser == null && Game.playerEnemy == null) {
+                    Game.playerUser = new Player();
+                    Game.playerEnemy = new Player();
                 }
-            } else if (enemyOrUser == 0) {
-                Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
-                Game.jPanel.repaint();
             }
+        } else if (enemyOrUser == 0) {
+            Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
+            Game.jPanel.repaint();
         }
-        //if(Game.placeOfBattleUser != null) {
+
         SendMsgAllClient(gson.toJson(Game.placeOfBattleUser), 1);
         SendMsgAllClient(gson.toJson(Game.placeOfBattleEnemy), 0);
-        //}
+
+        if(!Game.stepIsTrue && isReceiveShips)
+            SendYourStep(4);
+    }
+
+    @Override
+    public synchronized void onReceive1(TCPConnection tcpConnection, int step) {
+        if (step != 0)
+            Game.stepIsTrue = true;
+        else
+            Game.stepIsTrue = false;
     }
 
     @Override
@@ -74,6 +85,12 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
         final int size = connections.size();
         for (int i = 0; i < size; i++) {
             connections.get(i).SendData(enemy, enemyOrUser);
+        }
+    }
+    public static void SendYourStep(int enemyOrUser) {
+        final int size = connections.size();
+        for (int i = 0; i < size; i++) {
+            connections.get(i).YourStep(enemyOrUser);
         }
     }
 }
