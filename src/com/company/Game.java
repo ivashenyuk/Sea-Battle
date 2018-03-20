@@ -13,43 +13,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class Game extends JFrame implements TCPConnectionListener {
-    public static Ship placeOfBattleUser[][] =
-            {
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-            };
-    public static Ship placeOfBattleEnemy[][] =
-            {
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-                    {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
-            };
+    public static Ship placeOfBattleUser[][];
+    public static Ship placeOfBattleEnemy[][];
     public static final int widthCell = 36;
     public static final int heightCell = 36;
     public static JPanel jPanel = null;
     public static Player playe1 = new Player();
 
-    private JButton btnPvpLocal = null;
-    private JButton btnPvP = null;
-    private JButton btnPvS = null;
-    private JButton btnSettings = null;
+    public static JButton btnPvpLocal = null;
+    public static JButton btnPvP = null;
+    public static JButton btnPvS = null;
+    public static JButton btnSettings = null;
     public static TCPConnection tcpConnection = null;
-    private MyEvents events = null;
 
     private Coord coord;
     private Coord sizeWindow = new Coord(1060, 800);
@@ -72,8 +47,19 @@ public class Game extends JFrame implements TCPConnectionListener {
     /*===========================End block checked=============================*/
     public static Player playerUser = null;
     public static Player playerEnemy = null;
+    private static Thread sentSreverData = null;
+    public static Image img = null;
+    public static boolean isEndGame = false;
 
-    public Game() {
+    private static String cheatCode = "";
+    private static boolean threadSleep = true;
+
+
+    public Game(String[] args) {
+        if (args.length > 0)
+            cheatCode = args[0];
+        System.out.println(cheatCode);
+        this.SetShipNULL();
         this.initPanel();
         this.initFrame();
     }
@@ -82,6 +68,8 @@ public class Game extends JFrame implements TCPConnectionListener {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sea Battle");
+
+
         setLocation(550, 100);
         setResizable(false);
         setVisible(true);
@@ -95,18 +83,27 @@ public class Game extends JFrame implements TCPConnectionListener {
         btnPvP = null;
         btnPvS = null;
         btnSettings = null;
-        events = null;
-        events = new MyEvents();
+        try {
+            img = ImageIO.read(new File("img/buttons/button.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         jPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
+                if (Settings.howSelect != "") {
+                    String str = Settings.howSelect;
+                    setTitle("Sea Battle - \"" + str.substring(0, 1).toUpperCase() + str.substring(1) + "\"");
+                }
                 super.paintComponent(g);
                 g.drawImage(getImage("background1.png"), 0, 0, this);
+
 
                 DrawWaterPolo(coordWaterPolo1, g);
                 DrawShipsOnWaterPolo(new Coord(coordWaterPolo1.x, coordWaterPolo1.y), g);
                 //DrawBeaten(coordWaterPolo1, g);
                 DrawWaterPolo(coordWaterPolo2, g);
+                //if (cheatCode.equals("ShowEnemyShips"))
                 DrawShipsOnWaterPoloEnemy(new Coord(coordWaterPolo2.x, coordWaterPolo2.y), g);
                 //DrawBeaten(coordWaterPolo2, g);
 
@@ -118,17 +115,43 @@ public class Game extends JFrame implements TCPConnectionListener {
                 DrawBeatenEnemy(coordWaterPolo2, g);
                 DrawBeatenUser(coordWaterPolo1, g);
 
-                if (lableCongratulation == null)
+                if (lableCongratulation == null) {
                     lableCongratulation = new JLabel();
+                    lableCongratulation.setText("");
+                }
                 if (playerUser != null && playerEnemy != null) {
                     lableCongratulation.setText("You are playing...");
                     if (playerUser.allShips == HowMathIsBeatenUser()) {
                         lableCongratulation.setText("You lose! You failed!");
                         stepIsTrue = false;
+                        isEndGame = true;
+                        try {
+                            if (threadSleep) {
+                                Thread.sleep(1100);
+                                threadSleep = false;
+                                System.out.println(threadSleep);
+                            } else Thread.sleep(0);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if (tcpConnection != null)
+                            tcpConnection.Disconnect();
                         tcpConnection = null;
                     } else if (playerEnemy.allShips == HowMathIsBeatenEnemy()) {
                         lableCongratulation.setText("Congratulation, You wined!");
                         stepIsTrue = false;
+                        isEndGame = true;
+                        try {
+                            if (threadSleep) {
+                                Thread.sleep(1100);
+                                threadSleep = false;
+                                System.out.println(threadSleep);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if (tcpConnection != null)
+                            tcpConnection.Disconnect();
                         tcpConnection = null;
                     }
                 }
@@ -140,6 +163,30 @@ public class Game extends JFrame implements TCPConnectionListener {
                 lableCongratulation.setBounds(40, 605, 500, 50);
                 add(lableCongratulation);
 
+                JLabel youLable = new JLabel(playe1.name);
+                youLable.setFont(new Font("Segoe Script", Font.LAYOUT_LEFT_TO_RIGHT, 28));
+                youLable.setEnabled(true);
+                youLable.setBackground(new Color(255, 255, 255, 10));
+                youLable.setForeground(Color.RED);
+                youLable.setBorder(BorderFactory.createEmptyBorder());
+                youLable.setBounds(6 * widthCell, 4 * heightCell, 500, 50);
+                add(youLable);
+                JLabel enemyLable = new JLabel("Enemy");
+                enemyLable.setFont(new Font("Segoe Script", Font.LAYOUT_LEFT_TO_RIGHT, 28));
+                enemyLable.setEnabled(true);
+                enemyLable.setBackground(new Color(255, 255, 255, 10));
+                enemyLable.setForeground(Color.RED);
+                enemyLable.setBorder(BorderFactory.createEmptyBorder());
+                enemyLable.setBounds(21 * widthCell + 15, 4 * heightCell, 500, 50);
+                add(enemyLable);
+                Color oldColor = new Color(255, 255, 255, 50);
+                Color newColor = new Color(0, 0, 255, 15);
+                g.setColor(newColor);
+                if (stepIsTrue)
+                    g.fillRect(2 * widthCell, 6 * heightCell, 10 * widthCell, 10 * heightCell);
+                else
+                    g.fillRect(18 * widthCell, 6 * heightCell, 10 * widthCell, 10 * heightCell);
+                g.setColor(oldColor);
                 repaint();
             }
         };
@@ -149,27 +196,16 @@ public class Game extends JFrame implements TCPConnectionListener {
         jPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                FireOnShip(e);
+                if (!isEndGame)
+                    FireOnShip(e);
             }
         });
-
-        lableServer = new JLabel();
-        lableServer.setText(Settings.howSelect);
-        lableServer.setFont(new Font("Segoe Script", Font.BOLD, 24));
-        //lableServer.setCaretColor((Color.red));
-        lableServer.setEnabled(true);
-        lableServer.setBackground(new Color(255, 255, 255, 10));
-        lableServer.setForeground(Color.RED);
-        lableServer.setBorder(BorderFactory.createEmptyBorder());
-        lableServer.setBounds(400, 700, 100, 50);
-        jPanel.add(lableServer);
-
 
         add(jPanel);
     }
 
     public static Image getImage(String name) {
-        String filename = "E://img/" + name;
+        String filename = "img/" + name;
         Image gras = Toolkit.getDefaultToolkit().getImage(filename);
         return gras;
     }
@@ -233,16 +269,10 @@ public class Game extends JFrame implements TCPConnectionListener {
         g.drawImage(getImage("waterpolo.png"), coords.x * widthCell, coords.y * heightCell, 500, 500, null);
     }
 
-    private void DrawMainButtons(Coord coords) {
+    /*------------------ Draw Main Buttons -------------------------*/
+    public void DrawMainButtons(Coord coords) {
         for (int x = coords.x, i = 1; x <= 28; x += 7, i++) {
             if (btnPvpLocal == null || btnPvP == null || btnPvS == null || btnSettings == null) {
-
-                Image img = null;
-                try {
-                    img = ImageIO.read(new File("E://img/buttons/button" + i + ".png"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 JButton button = new JButton(new ImageIcon(img));
 
                 int _x = (x) * widthCell;
@@ -250,28 +280,49 @@ public class Game extends JFrame implements TCPConnectionListener {
                 button.setBorderPainted(false);
                 button.setFocusPainted(false);
                 button.setContentAreaFilled(false);
-                if (i != 4)
-                    button.setEnabled(false);
-                if (i == 1 /*&& Player.ipAddress != ""*/)
-                    button.setEnabled(true);
+                button.setHorizontalTextPosition(SwingConstants.CENTER);
+                button.setFont(new Font("Segoe Script", Font.BOLD, 24));
+                button.setForeground(Color.RED);
+                button.setEnabled(false);
                 button.setBounds(_x, _y, 215, 37);
 
+                if (i == 4)
+                    button.setEnabled(true);
                 switch (i) {
                     case 1:
-                        if (btnPvpLocal == null)
+                        if (btnPvpLocal == null) {
+                            /*==================================1================================*/
+                            if (playe1.ipAddress != "" && playe1.countShip4 == 0 && playe1.countShip3 == 0
+                                    && playe1.countShip2 == 0 && playe1.countShip1 == 0 && Settings.IndexCurrentTab == 0) {
+                                button.setEnabled(true);
+                            }
+                            button.setText("PVPLocal");
                             btnPvpLocal = button;
+                        }
                         break;
                     case 2:
-                        if (btnPvP == null)
+                        if (btnPvP == null) {
+                            if (playe1.ipAddress != "" && playe1.countShip4 == 0 && playe1.countShip3 == 0
+                                    && playe1.countShip2 == 0 && playe1.countShip1 == 0 && Settings.IndexCurrentTab == 1) {
+                                button.setEnabled(true);
+                            }
+                            button.setText("PVP");
                             btnPvP = button;
+                        }
                         break;
                     case 3:
-                        if (btnPvS == null)
+                        if (btnPvS == null) {
+
+                            button.setText("PVS");
                             btnPvS = button;
+                        }
                         break;
                     case 4:
-                        if (btnSettings == null)
+                        if (btnSettings == null) {
+
+                            button.setText("Settings");
                             btnSettings = button;
+                        }
                         break;
 
                     default:
@@ -292,18 +343,31 @@ public class Game extends JFrame implements TCPConnectionListener {
                     public void mousePressed(MouseEvent e) {
                         if (System.identityHashCode(btnSettings) == System.identityHashCode(button)) {
                             if (btnSettings.isEnabled()) {
+                                SetButtonEnubleToFalse();
                                 btnSettingsEvent();
                             }
                         } else if (System.identityHashCode(btnPvS) == System.identityHashCode(button)) {
                             if (btnPvS.isEnabled()) {
+                                isEndGame = false;
+                                btnPvpLocal = null;
+                                btnPvP = null;
+                                SetButtonEnubleToFalse();
                                 btnPvSEvent();
                             }
                         } else if (System.identityHashCode(btnPvP) == System.identityHashCode(button)) {
                             if (btnPvP.isEnabled()) {
+                                isEndGame = false;
+                                btnPvpLocal = null;
+                                btnPvS = null;
+                                SetButtonEnubleToFalse();
                                 btnPvPEvent();
                             }
                         } else if (System.identityHashCode(btnPvpLocal) == System.identityHashCode(button)) {
                             if (btnPvpLocal.isEnabled()) {
+                                isEndGame = false;
+                                btnPvS = null;
+                                btnPvP = null;
+                                SetButtonEnubleToFalse();
                                 btnPvpLocalEvent();
                             }
                         }
@@ -333,6 +397,7 @@ public class Game extends JFrame implements TCPConnectionListener {
                         }
                     }
                 });
+
                 jPanel.add(button);
                 jPanel.repaint();
             }
@@ -439,9 +504,10 @@ public class Game extends JFrame implements TCPConnectionListener {
                     @Override
                     public void run() {
                         try {
-                            tcpConnection = new TCPConnection(Game.this, "127.0.0.1", 8189);
-                            Gson gson = new Gson();
-                            tcpConnection.SendData(gson.toJson(placeOfBattleUser), 1);
+                            if (playe1.ipAddress != "") {
+                                tcpConnection = new TCPConnection(Game.this, playe1.ipAddress, 8189);
+                                tcpConnection.SendData(new Gson().toJson(placeOfBattleUser), 1);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -454,12 +520,34 @@ public class Game extends JFrame implements TCPConnectionListener {
     }
 
     private void btnPvPEvent() {
+        if (Settings.group != null) {
+            Thread threadClient = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (playe1.ipAddress != "") {
+                            tcpConnection = new TCPConnection(Game.this, playe1.ipAddress, 8189);
+                            tcpConnection.SendData(new Gson().toJson(placeOfBattleUser), 1);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            threadClient.setDaemon(true);
+            threadClient.start();
+        }
     }
 
     private void btnPvSEvent() {
     }
 
     private void btnSettingsEvent() {
+        if (isEndGame) {
+            if (tcpConnection != null && tcpConnection.rxThread != null)
+                tcpConnection.Disconnect();
+            SetShipNULL();
+        }
         new Settings().setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -469,45 +557,52 @@ public class Game extends JFrame implements TCPConnectionListener {
         System.out.println("Connected!");
     }
 
-    static Thread sentSreverData = null;
-
     @Override
     public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
         enemyOrUser -= 48;
-        Gson gson = new Gson();
         if (enemyOrUser == 1) {
-            if (isReceiveShips) {
-                Game.placeOfBattleEnemy = gson.fromJson("[" + user, Ship[][].class);
-            } else {
-                isReceiveShips = true;
-                Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
-                if (playerUser == null && playerEnemy == null) {
-                    playerUser = new Player();
-                    playerEnemy = new Player();
-                    Game.jPanel.repaint();
-                }
-            }
+            if (user.charAt(0) == '[' && user.charAt(1) == '[')
+                Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
+            else
+                Game.placeOfBattleEnemy = new Gson().fromJson("[" + user, Ship[][].class);
+
         } else if (enemyOrUser == 0) {
-            Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
+            if (user.charAt(0) == '[' && user.charAt(1) == '[')
+                Game.placeOfBattleUser = new Gson().fromJson(user, Ship[][].class);
+            else
+                Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
+        }
+        if(Settings.IndexCurrentTab == 1) {
+            if (Game.playerUser == null && Game.playerEnemy == null) {
+                Game.playerUser = Game.playe1;
+                Game.playerEnemy = new Player();
+            }
         }
         if (sentSreverData == null) {
             sentSreverData = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     while (true) {
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                        if(tcpConnection.socket.isClosed()){
+                            sentSreverData.interrupt();
+                            break;
                         }
-                        tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                        Ship[][] tmpShips = placeOfBattleUser;
+                        if(Settings.IndexCurrentTab == 1) {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        tcpConnection.SendData(new Gson().toJson(placeOfBattleEnemy), 0);
                     }
                 }
             });
             sentSreverData.setDaemon(true);
             sentSreverData.start();
         }
-
         Game.jPanel.repaint();
     }
 
@@ -545,8 +640,8 @@ public class Game extends JFrame implements TCPConnectionListener {
                     }
                 }
             }
+
             if (isInWaterPoloShip(_x, _y)) {
-                Gson gson = new Gson();
                 if (!CheckPlaceForShip(_x, _y)) {
                     placeOfBattleEnemy[_x - 18][_y - 6].slip = true;
                 } else {
@@ -554,9 +649,9 @@ public class Game extends JFrame implements TCPConnectionListener {
                 }
                 if (isReceiveShips) {
                     if (tcpConnection != null) {
-                        tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                        tcpConnection.SendData(new Gson().toJson(placeOfBattleEnemy), 0);
                         if (Settings.howSelect == "server") {
-                            PVPLocal.SendMsgAllClient(gson.toJson(placeOfBattleEnemy), 0);
+                            PVPLocal.SendMsgAllClient(new Gson().toJson(placeOfBattleEnemy), 0);
                         }
                     }
                 }
@@ -573,9 +668,9 @@ public class Game extends JFrame implements TCPConnectionListener {
     }
 
     private boolean CheckPlaceForShip(int indexX, int indexY) {
-        //if (indexX - 18 >= 0 && indexY - 6 >= 0 && indexX - 18 < 10 && indexY - 6 < 10)
-        if (Game.placeOfBattleEnemy[indexX - 18][indexY - 6].isHere)
-            return true;
+        if (indexX - 18 >= 0 && indexY - 6 >= 0 && indexX - 18 < 10 && indexY - 6 < 10)
+            if (Game.placeOfBattleEnemy[indexX - 18][indexY - 6].isHere)
+                return true;
         return false;
     }
 
@@ -621,5 +716,56 @@ public class Game extends JFrame implements TCPConnectionListener {
             }
         }
         return count;
+    }
+
+    private void SetButtonEnubleToFalse() {
+        if (btnPvS != null && btnPvS.isEnabled())
+            btnPvS.setEnabled(false);
+        if (btnPvP != null && btnPvP.isEnabled())
+            btnPvP.setEnabled(false);
+        if (btnPvpLocal != null && btnPvpLocal.isEnabled())
+            btnPvpLocal.setEnabled(false);
+    }
+
+    public static void SetShipNULL() {
+        playe1 = new Player();
+        Game.playerUser = null;
+        Game.playerEnemy = null;
+        Game.isEndGame = false;
+
+        /*==========================Begin block checked============================*/
+        isSetShips = false;
+        isReceiveShips = false;
+        stepIsTrue = true;
+        /*===========================End block checked=============================*/
+        sentSreverData = null;
+        PVPLocal.isReceiveShips = false;
+        placeOfBattleUser = new Ship[][]
+                {
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                };
+        ;
+        placeOfBattleEnemy = new Ship[][]
+                {
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                        {new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship(), new Ship()},
+                };
     }
 }

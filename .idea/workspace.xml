@@ -7,22 +7,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f84212-988b-499e-b548-d596935932fa" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Sea_Battle_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Sea_Battle_jar.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$3.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$4.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$5.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Sea Battle.iml" afterPath="$PROJECT_DIR$/Sea Battle.iml" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Sea_Battle_jar/Sea Battle.jar" afterPath="$PROJECT_DIR$/out/artifacts/Sea_Battle_jar/Sea Battle.jar" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$1.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$2.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$3.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$3.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$4.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$4.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$5.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game$5.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Game.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/PVPLocal$1.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/PVPLocal$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/PVPLocal.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/PVPLocal.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Player.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Player.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$2.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$3.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings$3.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/Settings.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnection$1.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnection$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnection.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnection.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnectionListener.class" afterPath="$PROJECT_DIR$/out/production/Sea Battle/com/company/TCPConnectionListener.class" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/CustomTextField.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Game.java" afterPath="$PROJECT_DIR$/src/com/company/Game.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/MyEvents.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/com/company/PVPLocal.java" afterPath="$PROJECT_DIR$/src/com/company/PVPLocal.java" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" afterPath="$PROJECT_DIR$/src/com/company/Player.java" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Settings.java" afterPath="$PROJECT_DIR$/src/com/company/Settings.java" />
       <change beforePath="$PROJECT_DIR$/src/com/company/TCPConnection.java" afterPath="$PROJECT_DIR$/src/com/company/TCPConnection.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/TCPConnectionListener.java" afterPath="$PROJECT_DIR$/src/com/company/TCPConnectionListener.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,19 +54,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="127" column="45" lean-forward="true" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
+            <state relative-caret-position="422">
+              <caret line="579" column="9" lean-forward="false" selection-start-line="579" selection-start-column="9" selection-end-line="579" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#Game#0;class#Game#0" expanded="false" />
                 <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-                <element signature="e#5332#7514#0" expanded="true" />
-                <element signature="e#7513#7514#0" expanded="true" />
-                <element signature="e#7616#7766#0" expanded="true" />
-                <element signature="e#7765#7766#0" expanded="true" />
+                <element signature="e#2888#8020#0" expanded="true" />
+                <element signature="e#8019#8020#0" expanded="true" />
+                <element signature="e#8122#8308#0" expanded="true" />
+                <element signature="e#8307#8308#0" expanded="true" />
                 <element signature="method#getImage#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -58,6 +74,10 @@
                 <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+                <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+                <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+                <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+                <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
                 <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -65,14 +85,22 @@
                 <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
                 <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
                 <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-                <element signature="e#20354#20355#0" expanded="true" />
-                <element signature="e#20443#20444#0" expanded="true" />
-                <element signature="e#20621#20622#0" expanded="true" />
-                <element signature="e#20669#20670#0" expanded="true" />
-                <element signature="e#22509#22510#0" expanded="true" />
-                <element signature="e#22560#22561#0" expanded="true" />
+                <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+                <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+                <element signature="e#23278#23279#0" expanded="true" />
+                <element signature="e#23326#23327#0" expanded="true" />
+                <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+                <element signature="e#25621#25622#0" expanded="true" />
+                <element signature="e#25672#25673#0" expanded="true" />
+                <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+                <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+                <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+                <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+                <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
                 <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
                 <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+                <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+                <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -81,12 +109,9 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-              <folding>
-                <element signature="e#327#328#0" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="260">
+              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,77 +119,40 @@
       <file leaf-file-name="PVPLocal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/PVPLocal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="366">
+              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1049#1050#0" expanded="true" />
-                <element signature="e#1095#1096#0" expanded="true" />
-                <element signature="e#2498#2499#0" expanded="true" />
-                <element signature="e#2547#2548#0" expanded="true" />
+                <element signature="e#1118#1119#0" expanded="true" />
+                <element signature="e#1164#1165#0" expanded="true" />
+                <element signature="e#2743#2744#0" expanded="true" />
+                <element signature="e#2792#2793#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TCPConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-292">
-              <caret line="30" column="58" lean-forward="false" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2778#2779#0" expanded="true" />
-                <element signature="e#2868#2869#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ship.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Ship.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="109" column="73" lean-forward="false" selection-start-line="109" selection-start-column="73" selection-end-line="109" selection-end-column="73" />
+            <state relative-caret-position="3402">
+              <caret line="478" column="38" lean-forward="true" selection-start-line="478" selection-start-column="38" selection-end-line="478" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-                <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-                <element signature="class#2595:4110" expanded="false" />
-                <element signature="class#4671:6192" expanded="false" />
-                <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-                <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-                <element signature="class#6780:8352" expanded="false" />
-                <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-                <element signature="class#8941:10511" expanded="false" />
+                <element signature="class#3301:4799" expanded="false" />
+                <element signature="class#5372:6872" expanded="false" />
+                <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+                <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+                <element signature="class#7472:9024" expanded="false" />
+                <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+                <element signature="class#9625:11175" expanded="false" />
                 <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-                <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
                 <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
                 <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-                <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
                 <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
                 <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+                <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TCPConnectionListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnectionListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -193,6 +181,20 @@
       <find>interrupt</find>
       <find>isSetShips</find>
       <find>System.out</find>
+      <find>playe1</find>
+      <find>192</find>
+      <find>E://</find>
+      <find>1</find>
+      <find>isPressedMouseLeftButton</find>
+      <find>img</find>
+      <find>isMousePressed</find>
+      <find>new Pl</find>
+      <find>inde</find>
+      <find>gson</find>
+      <find>new Gson()</find>
+      <find>SendD</find>
+      <find>SendDa</find>
+      <find>setSelectedIndex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -213,14 +215,14 @@
         <option value="$PROJECT_DIR$/src/com/company/Direction.java" />
         <option value="$PROJECT_DIR$/src/com/company/CustomTextField.java" />
         <option value="$PROJECT_DIR$/src/com/company/Tabs.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Ship.java" />
         <option value="$PROJECT_DIR$/src/com/company/TCPConnectionListener.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/TCPConnection.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Settings.java" />
-        <option value="$PROJECT_DIR$/src/com/company/PVPLocal.java" />
         <option value="$PROJECT_DIR$/src/com/company/Player.java" />
+        <option value="$PROJECT_DIR$/src/com/company/PVPLocal.java" />
         <option value="$PROJECT_DIR$/src/com/company/Game.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Settings.java" />
       </list>
     </option>
   </component>
@@ -252,6 +254,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -298,18 +302,21 @@
       </pane>
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gson-2.8.2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ServerPVP" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yurai\IdeaProjects\Sea Battle\src\com\company" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -383,30 +390,34 @@
       <workItem from="1520104694969" duration="4243000" />
       <workItem from="1520170519612" duration="45749000" />
       <workItem from="1520614414148" duration="70830000" />
-      <workItem from="1520934167566" duration="16923000" />
+      <workItem from="1520934167566" duration="32430000" />
+      <workItem from="1521027708724" duration="36248000" />
+      <workItem from="1521131698438" duration="4350000" />
+      <workItem from="1521441082712" duration="3759000" />
+      <workItem from="1521465212163" duration="29767000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294711000" />
+    <option name="totallyTimeSpent" value="384342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11221122" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19141914" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1870187" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1773163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18370607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -431,7 +442,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="61" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -440,11 +451,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2778#2779#0" expanded="true" />
-            <element signature="e#2868#2869#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -460,10 +467,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -471,7 +475,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#154#155#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -480,11 +486,10 @@
         <state relative-caret-position="80">
           <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -501,7 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -510,13 +514,12 @@
         <state relative-caret-position="7840">
           <caret line="392" column="39" lean-forward="false" selection-start-line="392" selection-start-column="39" selection-end-line="392" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -525,6 +528,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -532,14 +539,22 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -551,21 +566,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
             <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -575,13 +588,12 @@
         <state relative-caret-position="7320">
           <caret line="366" column="80" lean-forward="false" selection-start-line="366" selection-start-column="80" selection-end-line="366" selection-end-column="80" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -590,6 +602,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -597,14 +613,22 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -614,11 +638,10 @@
         <state relative-caret-position="80">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -627,10 +650,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -649,21 +669,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
             <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,13 +691,12 @@
         <state relative-caret-position="1200">
           <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -688,6 +705,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -695,14 +716,22 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -712,11 +741,10 @@
         <state relative-caret-position="80">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -725,10 +753,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -747,21 +772,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
             <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -771,11 +794,10 @@
         <state relative-caret-position="80">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,10 +806,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -796,13 +815,12 @@
         <state relative-caret-position="2720">
           <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -811,6 +829,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -818,14 +840,22 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -845,21 +875,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
             <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -869,13 +897,12 @@
         <state relative-caret-position="2840">
           <caret line="253" column="61" lean-forward="false" selection-start-line="253" selection-start-column="61" selection-end-line="253" selection-end-column="61" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -884,6 +911,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -891,14 +922,22 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -907,10 +946,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -929,21 +965,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
             <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
             <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
             <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -952,7 +986,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#154#155#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -960,7 +996,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#154#155#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -974,13 +1012,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Extend.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Tabs.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/CustomTextField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-854">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Renges.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -996,26 +1027,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Sea Battle.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_161/src.zip!/java/net/ServerSocket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="275" column="61" lean-forward="true" selection-start-line="275" selection-start-column="61" selection-end-line="275" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,7 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
           <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1053,66 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="109" column="73" lean-forward="false" selection-start-line="109" selection-start-column="73" selection-end-line="109" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Settings#0;class#Settings#0" expanded="false" />
-            <element signature="method#InitFrame#0;class#Settings#0" expanded="false" />
-            <element signature="class#2595:4110" expanded="false" />
-            <element signature="class#4671:6192" expanded="false" />
-            <element signature="method#mouseClicked#0;class#4671:6192" expanded="false" />
-            <element signature="method#mousePressed#0;class#4671:6192" expanded="false" />
-            <element signature="class#6780:8352" expanded="false" />
-            <element signature="method#mousePressed#0;class#6780:8352" expanded="false" />
-            <element signature="class#8941:10511" expanded="false" />
-            <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#SetPositionShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
-            <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/PVPLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="30" column="58" lean-forward="false" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2778#2779#0" expanded="true" />
-            <element signature="e#2868#2869#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Ship.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1121,37 +1074,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_161/src.zip!/java/net/SocketInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sea Battle.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="73" lean-forward="false" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/CustomTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1288">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#154#155#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/PVPLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding>
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#2743#2744#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/TCPConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3052#3053#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="127" column="45" lean-forward="true" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
+        <state relative-caret-position="422">
+          <caret line="579" column="9" lean-forward="false" selection-start-line="579" selection-start-column="9" selection-end-line="579" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#initFrame#0;class#Game#0" expanded="false" />
-            <element signature="e#5332#7514#0" expanded="true" />
-            <element signature="e#7513#7514#0" expanded="true" />
-            <element signature="e#7616#7766#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#2888#8020#0" expanded="true" />
+            <element signature="e#8019#8020#0" expanded="true" />
+            <element signature="e#8122#8308#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
             <element signature="method#getImage#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawShipsOnWaterPoloEnemy#0;class#Game#0" expanded="false" />
@@ -1160,6 +1164,10 @@
             <element signature="method#DrawBeatenUser#0;class#Game#0" expanded="false" />
             <element signature="method#DrawWaterPolo#0;class#Game#0" expanded="false" />
             <element signature="method#DrawMainButtons#0;class#Game#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseReleased#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseEntered#0;class#14247:16968" expanded="false" />
+            <element signature="method#mouseExited#0;class#14247:16968" expanded="false" />
             <element signature="method#DrawShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawOneShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawTwoShips#0;class#Game#0" expanded="false" />
@@ -1167,14 +1175,46 @@
             <element signature="method#DrawFourShips#0;class#Game#0" expanded="false" />
             <element signature="method#DrawSymbols#0;class#Game#0" expanded="false" />
             <element signature="method#btnPvpLocalEvent#0;class#Game#0" expanded="false" />
-            <element signature="e#20354#20355#0" expanded="true" />
-            <element signature="e#20443#20444#0" expanded="true" />
-            <element signature="e#20621#20622#0" expanded="true" />
-            <element signature="e#20669#20670#0" expanded="true" />
-            <element signature="e#22509#22510#0" expanded="true" />
-            <element signature="e#22560#22561#0" expanded="true" />
+            <element signature="method#btnPvPEvent#0;class#Game#0" expanded="false" />
+            <element signature="method#btnSettingsEvent#0;class#Game#0" expanded="false" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23326#23327#0" expanded="true" />
+            <element signature="method#onReceive1#0;class#Game#0" expanded="false" />
+            <element signature="e#25621#25622#0" expanded="true" />
+            <element signature="e#25672#25673#0" expanded="true" />
+            <element signature="method#onExeption#0;class#Game#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Game#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#0;class#Game#0" expanded="false" />
+            <element signature="method#SetCircleSlip#1;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenEnemy#0;class#Game#0" expanded="false" />
             <element signature="method#HowMathIsBeatenUser#0;class#Game#0" expanded="false" />
+            <element signature="method#SetButtonEnubleToFalse#0;class#Game#0" expanded="false" />
+            <element signature="method#SetShipNULL#0;class#Game#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3402">
+          <caret line="478" column="38" lean-forward="true" selection-start-line="478" selection-start-column="38" selection-end-line="478" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Settings#0;class#Settings#0" expanded="false" />
+            <element signature="class#3301:4799" expanded="false" />
+            <element signature="class#5372:6872" expanded="false" />
+            <element signature="method#mouseClicked#0;class#5372:6872" expanded="false" />
+            <element signature="method#mousePressed#0;class#5372:6872" expanded="false" />
+            <element signature="class#7472:9024" expanded="false" />
+            <element signature="method#mousePressed#0;class#7472:9024" expanded="false" />
+            <element signature="class#9625:11175" expanded="false" />
+            <element signature="method#SetValueIsPressetBtn#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckSizeShip#0;class#Settings#0" expanded="false" />
+            <element signature="method#isInWaterPoloShip#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlusSizeShip#0;class#Settings#0" expanded="false" />
+            <element signature="method#GetNextDirection#0;class#Settings#0" expanded="false" />
+            <element signature="method#CheckPlaceForShip#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1209,7 +1249,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1221,7 +1261,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>java-json</last-edited>
+          <last-edited>gson-2.8.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1257,7 +1297,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>gson-2.8.2</last-edited>
+          <last-edited>json-simple-1.1.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Sea_Battle_jar</output-path>
     <root id="archive" name="Sea Battle.jar">
       <element id="module-output" name="Sea Battle" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/gson-2.8.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

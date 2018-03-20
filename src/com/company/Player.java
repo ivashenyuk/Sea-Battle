@@ -14,12 +14,12 @@ public class Player {
     }
 
     public Player() {
-        name = "Player1";
-        ipAddress = "127.0.0.1:8189";
-        this.countShip1 = 4;
-        this.countShip2 = 3;
-        this.countShip3 = 2;
+        name = "You";
+        ipAddress = "127.0.0.1";
+        this.countShip1 = 0;
+        this.countShip2 = 0;
+        this.countShip3 = 0;
         this.countShip4 = 1;
-        this.allShips = 20;
+        this.allShips = 4;
     }
 }
