@@ -561,48 +561,82 @@ public class Game extends JFrame implements TCPConnectionListener {
     public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
         enemyOrUser -= 48;
 
-        if (enemyOrUser == 1) {
-            if (user.charAt(0) == '[' && user.charAt(1) == '[')
-                Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
-            else
-                Game.placeOfBattleEnemy = new Gson().fromJson("[" + user, Ship[][].class);
-            if (Game.playerUser == null && Game.playerEnemy == null) {
-                Game.playerUser = Game.playe1;
-                Game.playerEnemy = new Player();
-            }
-
-        } else if (enemyOrUser == 0) {
-            if (user.charAt(0) == '[' && user.charAt(1) == '[')
-                Game.placeOfBattleUser = new Gson().fromJson(user, Ship[][].class);
-            else
-                Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
-        }
-
-
-        if (sentSreverData == null) {
-            sentSreverData = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        if (tcpConnection.socket.isClosed()) {
-                            sentSreverData.interrupt();
-                            break;
-                        }
-                        Ship[][] tmpShips = placeOfBattleUser;
-//                        if (Settings.IndexCurrentTab == 1) {
-//                            try {
-//                                Thread.sleep(1000);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
-                        tcpConnection.SendData(new Gson().toJson(placeOfBattleEnemy), 0);
+        if (Settings.IndexCurrentTab == 0) {
+            Gson gson = new Gson();
+            if (enemyOrUser == 1) {
+                if (isReceiveShips) {
+                    Game.placeOfBattleEnemy = gson.fromJson("[" + user, Ship[][].class);
+                } else {
+                    isReceiveShips = true;
+                    Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+                    if (playerUser == null && playerEnemy == null) {
+                        playerUser = new Player();
+                        playerEnemy = new Player();
+                        Game.jPanel.repaint();
                     }
                 }
-            });
-            sentSreverData.setDaemon(true);
-            sentSreverData.start();
+            } else if (enemyOrUser == 0) {
+                Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
+            }
+            if (sentSreverData == null) {
+                sentSreverData = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            tcpConnection.SendData(gson.toJson(placeOfBattleEnemy), 0);
+                        }
+                    }
+                });
+                sentSreverData.setDaemon(true);
+                sentSreverData.start();
+            }
+        } else if (Settings.IndexCurrentTab == 1) {
+            if (enemyOrUser == 1) {
+                if (user.charAt(0) == '[' && user.charAt(1) == '[')
+                    Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
+                else
+                    Game.placeOfBattleEnemy = new Gson().fromJson("[" + user, Ship[][].class);
+                if (Game.playerUser == null && Game.playerEnemy == null) {
+                    Game.playerUser = Game.playe1;
+                    Game.playerEnemy = new Player();
+                }
+
+            } else if (enemyOrUser == 0) {
+                if (user.charAt(0) == '[' && user.charAt(1) == '[')
+                    Game.placeOfBattleUser = new Gson().fromJson(user, Ship[][].class);
+                else
+                    Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
+            }
+            if (sentSreverData == null) {
+                sentSreverData = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            if (tcpConnection.socket.isClosed()) {
+                                sentSreverData.interrupt();
+                                break;
+                            }
+                            if (Settings.IndexCurrentTab == 1) {
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            tcpConnection.SendData(new Gson().toJson(placeOfBattleEnemy), 0);
+                        }
+                    }
+                });
+                sentSreverData.setDaemon(true);
+                sentSreverData.start();
+            }
+
         }
         Game.jPanel.repaint();
     }

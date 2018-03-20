@@ -39,24 +39,44 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
     @Override
     public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
         enemyOrUser -= 48;
-        if (enemyOrUser == 1) {
-            if (isReceiveShips) {
-                Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
-            } else {
-                isReceiveShips = true;
-                Game.isReceiveShips = true;
-                Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
-                if (Game.playerUser == null && Game.playerEnemy == null) {
-                    Game.playerUser = Game.playe1;
-                    Game.playerEnemy = new Player();
+        if (Settings.IndexCurrentTab == 0) {
+            Gson gson = new Gson();
+            if (enemyOrUser == 1) {
+                if (isReceiveShips) {
+                    Game.placeOfBattleEnemy = gson.fromJson("[" + user, Ship[][].class);
+                } else {
+                    isReceiveShips = true;
+                    Game.isReceiveShips = true;
+                    Game.placeOfBattleEnemy = gson.fromJson(user, Ship[][].class);
+                    if (Game.playerUser == null && Game.playerEnemy == null) {
+                        Game.playerUser = new Player();
+                        Game.playerEnemy = new Player();
+                    }
                 }
+            } else if (enemyOrUser == 0) {
+                Game.placeOfBattleUser = gson.fromJson("[" + user, Ship[][].class);
+                Game.jPanel.repaint();
             }
-        } else if (enemyOrUser == 0) {
-            if (Settings.IndexCurrentTab == 0)
-                Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
-            else if (Settings.IndexCurrentTab == 1)
-                Game.placeOfBattleUser = new Gson().fromJson(user, Ship[][].class);
-            Game.jPanel.repaint();
+        } else if (Settings.IndexCurrentTab == 1) {
+            if (enemyOrUser == 1) {
+                if (isReceiveShips) {
+                    Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
+                } else {
+                    isReceiveShips = true;
+                    Game.isReceiveShips = true;
+                    Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
+                    if (Game.playerUser == null && Game.playerEnemy == null) {
+                        Game.playerUser = Game.playe1;
+                        Game.playerEnemy = new Player();
+                    }
+                }
+            } else if (enemyOrUser == 0) {
+                if (Settings.IndexCurrentTab == 0)
+                    Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
+                else if (Settings.IndexCurrentTab == 1)
+                    Game.placeOfBattleUser = new Gson().fromJson(user, Ship[][].class);
+                Game.jPanel.repaint();
+            }
         }
 
         SendMsgAllClient(new Gson().toJson(Game.placeOfBattleUser), 1);
@@ -72,6 +92,8 @@ public class PVPLocal extends Thread implements TCPConnectionListener {
             Game.stepIsTrue = true;
         else
             Game.stepIsTrue = false;
+        if (Game.stepIsTrue)
+            SendYourStep(0);
     }
 
     @Override
