@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.nio.charset.Charset;
 
 public class TCPConnection {
-    private final Socket socket;
+    public final Socket socket;
     public final Thread rxThread;
     private final TCPConnectionListener eventListener;
     private BufferedReader in;
@@ -26,15 +26,20 @@ public class TCPConnection {
                 try {
                     TCPConnection.this.eventListener.onConnectionReady(TCPConnection.this);
                     while (!rxThread.isInterrupted()) {
+                        if (socket.isClosed()) {
+                            break;
+                        } else {
                             String user = in.readLine();
                             int enemyOrUser = in.read();
                             if (user.equals("yuorstep")) {
                                 TCPConnection.this.eventListener.onReceive1(TCPConnection.this, enemyOrUser - 48);
                             } else
                                 TCPConnection.this.eventListener.onReceive(TCPConnection.this, user, enemyOrUser);
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    rxThread.interrupt();
                 } finally {
                     TCPConnection.this.eventListener.onDisconnect(TCPConnection.this);
                 }
