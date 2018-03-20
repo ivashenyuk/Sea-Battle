@@ -560,11 +560,16 @@ public class Game extends JFrame implements TCPConnectionListener {
     @Override
     public synchronized void onReceive(TCPConnection tcpConnection, String user, int enemyOrUser) {
         enemyOrUser -= 48;
+
         if (enemyOrUser == 1) {
             if (user.charAt(0) == '[' && user.charAt(1) == '[')
                 Game.placeOfBattleEnemy = new Gson().fromJson(user, Ship[][].class);
             else
                 Game.placeOfBattleEnemy = new Gson().fromJson("[" + user, Ship[][].class);
+            if (Game.playerUser == null && Game.playerEnemy == null) {
+                Game.playerUser = Game.playe1;
+                Game.playerEnemy = new Player();
+            }
 
         } else if (enemyOrUser == 0) {
             if (user.charAt(0) == '[' && user.charAt(1) == '[')
@@ -572,29 +577,25 @@ public class Game extends JFrame implements TCPConnectionListener {
             else
                 Game.placeOfBattleUser = new Gson().fromJson("[" + user, Ship[][].class);
         }
-        if(Settings.IndexCurrentTab == 1) {
-            if (Game.playerUser == null && Game.playerEnemy == null) {
-                Game.playerUser = Game.playe1;
-                Game.playerEnemy = new Player();
-            }
-        }
+
+
         if (sentSreverData == null) {
             sentSreverData = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     while (true) {
-                        if(tcpConnection.socket.isClosed()){
+                        if (tcpConnection.socket.isClosed()) {
                             sentSreverData.interrupt();
                             break;
                         }
                         Ship[][] tmpShips = placeOfBattleUser;
-                        if(Settings.IndexCurrentTab == 1) {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
+//                        if (Settings.IndexCurrentTab == 1) {
+//                            try {
+//                                Thread.sleep(1000);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
 
                         tcpConnection.SendData(new Gson().toJson(placeOfBattleEnemy), 0);
                     }
