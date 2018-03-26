@@ -2,7 +2,6 @@ package com.company;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -14,7 +13,7 @@ import java.io.IOException;
 public class Settings extends JFrame {
     private Coord sizeWindow = new Coord(825, 600);
     public static String howSelect = "";
-    public static int IndexCurrentTab = 0;
+    public static int IndexCurrentTab = 2;
     private JPanel jPanel;
     private boolean isPressedsButtons[] = {false, false, false, false};
     private static boolean isMousePressed = false;
@@ -27,7 +26,9 @@ public class Settings extends JFrame {
 
     private com.company.Direction direction = com.company.Direction.RIGHT;
     public static ButtonGroup group = null;
+    public static ButtonGroup groupComplexity = null;
     private static boolean isPressedMouseLeftButton = false;
+    public static String Complexity;
 
     public Settings() {
         InitFrame();
@@ -59,7 +60,7 @@ public class Settings extends JFrame {
             e.printStackTrace();
         }
         UIManager.put("TabbedPane.contentOpaque", Boolean.FALSE);
-        UIManager.put("TabbedPane.tabsOpaque", Boolean.FALSE);
+        //UIManager.put("TabbedPane.tabsOpaque", Boolean.FALSE);
         //створюємо вкладку
         JTabbedPane tabby = new JTabbedPane(JTabbedPane.TOP);
 
@@ -337,108 +338,47 @@ public class Settings extends JFrame {
 
         });
 
-        //----------------------- Name User -----------------------
-        JTextField nameUser = new JTextField(16);
-
-        nameUser.setBorder(BorderFactory.createLineBorder(new Color(41, 171, 226)));
-        nameUser.setBackground(new Color(255, 255, 255, 10));
-        nameUser.setForeground(Color.RED);
-        nameUser.setText(Game.playe1.name);
-        nameUser.setFont(new Font("Segoe Script", Font.BOLD, 18));
-        nameUser.setBounds(0, 50, 321, 35);
-        nameUser.setMargin(new Insets(30, 0, 100, 0));
-        nameUser.setMaximumSize(new Dimension(321, 35));
-        //Player.name = nameUser.getText();
-        //jPanel.add(nameUser);
-        //----------------------- IP for connection -----------------------
-        JTextField ipForConnection = new JTextField(16);
-
-        ipForConnection.setBorder(BorderFactory.createLineBorder(new Color(41, 171, 226)));
-        ipForConnection.setBackground(new Color(255, 255, 255, 10));
-        ipForConnection.setForeground(Color.RED);
-        //ipForConnection.setPlaceholder("127.0.0.1:8080");
-        ipForConnection.setText(Game.playe1.ipAddress);
-        ipForConnection.setFont(new Font("Segoe Script", Font.BOLD, 18));
-        ipForConnection.setBounds(0, 215, 321, 35);
-        ipForConnection.setMaximumSize(new Dimension(321, 35));
-        //Player.ipAddress = ipForConnection.getText();
-        //jPanel.add(ipForConnection);
 
         JRadioButton serverRadioButton = new JRadioButton();
         JRadioButton clientRadioButton = new JRadioButton();
+        serverRadioButton.setBackground(new Color(0, 0, 0, 0));
+        clientRadioButton.setBackground(new Color(0, 0, 0, 0));
         serverRadioButton.setActionCommand("server");
         clientRadioButton.setActionCommand("client");
 
         group = new ButtonGroup();
         group.add(serverRadioButton);
         group.add(clientRadioButton);
+        group.setSelected(serverRadioButton.getModel(), true);
         howSelect = "server";
-        serverRadioButton.setSelected(true);
-        ChangeListener changeListener = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-
-                JRadioButton radioButton = (JRadioButton) e.getSource();
-                if (radioButton == serverRadioButton && radioButton.isSelected()) {
-                    howSelect = "server";
-                } else if (radioButton == clientRadioButton && radioButton.isSelected()) {
-                    howSelect = "client";
-                }
+        ChangeListener changeListener = e -> {
+            JRadioButton radioButton = (JRadioButton) e.getSource();
+            if (radioButton == serverRadioButton && radioButton.isSelected()) {
+                howSelect = "server";
+            } else if (radioButton == clientRadioButton && radioButton.isSelected()) {
+                howSelect = "client";
             }
         };
         if (howSelect == "client") {
-            clientRadioButton.setSelected(true);
-            serverRadioButton.setSelected(false);
+            group.setSelected(clientRadioButton.getModel(), true);
 
         } else if (howSelect == "server") {
-            serverRadioButton.setSelected(true);
-            clientRadioButton.setSelected(false);
+            group.setSelected(serverRadioButton.getModel(), true);
 
         }
         serverRadioButton.addChangeListener(changeListener);
         clientRadioButton.addChangeListener(changeListener);
 
 
-        JLabel lableServer = new JLabel();
-        lableServer.setText("Server ");
-        lableServer.setFont(new Font("Segoe Script", Font.BOLD, 24));
-        //lableServer.setCaretColor((Color.red));
-        lableServer.setEnabled(true);
-        lableServer.setBackground(new Color(255, 255, 255, 10));
-        lableServer.setForeground(Color.RED);
-        lableServer.setBorder(BorderFactory.createEmptyBorder());
-
-        JLabel lableClient = new JLabel();
-        lableClient.setText("Client ");
-        lableClient.setFont(new Font("Segoe Script", Font.BOLD, 24));
-        //lableServer.setCaretColor((Color.red));
-        lableClient.setEnabled(true);
-        lableClient.setBackground(new Color(255, 255, 255, 10));
-        lableClient.setForeground(Color.RED);
-        lableClient.setBorder(BorderFactory.createEmptyBorder());
-
-        JLabel lableName = new JLabel();
-        lableName.setText("Your Name ");
-        lableName.setFont(new Font("Segoe Script", Font.BOLD, 22));
-        //lableServer.setCaretColor((Color.red));
-        lableName.setEnabled(true);
-        lableName.setBackground(new Color(255, 255, 255, 10));
-        lableName.setForeground(Color.RED);
-        lableName.setBorder(BorderFactory.createEmptyBorder());
-
-        JLabel lableIP = new JLabel();
-        lableIP.setText("Default IP - 127.0.0.1");
-        lableIP.setFont(new Font("Segoe Script", Font.BOLD, 22));
-        lableIP.setEnabled(true);
-        lableIP.setBackground(new Color(255, 255, 255, 10));
-        lableIP.setForeground(Color.RED);
-        lableIP.setBorder(BorderFactory.createEmptyBorder());
-        //Player.ipAddress = "127.0.0.1:8189";
+//FabryComponents - фабрика для створення компонентів
+        JLabel lableServer = FabryComponents.CreateJLableName("Server ", 24);
+        JLabel lableClient = FabryComponents.CreateJLableName("Client ", 24);
 
 
         //створюємо панелі для вкладок
         JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JPanel panel2 = new JPanel();
+        JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         //panel1.setLayout(new GridLayout(3, 2));
 
         panel1.add(lableServer);
@@ -448,31 +388,92 @@ public class Settings extends JFrame {
         panel1.add(clientRadioButton);
 
 
-            panel1.add(lableName);
-            panel1.add(nameUser);
-            panel1.add(lableIP);
-            panel1.add(ipForConnection);
+        //Begin Tab1
+        JTextField nameUser = FabryComponents.CreateLTextField(Game.playe1.name);
+        JTextField ipForConnection = FabryComponents.CreateLTextField(Game.playe1.ipAddress);
 
+        panel1.add(FabryComponents.CreateJLableName("Your Name ", 22));
+        panel1.add(nameUser);
+        panel1.add(FabryComponents.CreateJLableName("Default IP - 127.0.0.1", 22));
+        panel1.add(ipForConnection);
+        //End Tab1
 
-//            panel2.add(lableName);
-//            panel2.add(nameUser);
-//            panel2.add(lableIP);
-//            panel2.add(ipForConnection);
+        //Begin Tab2
+        JTextField nameUser1 = FabryComponents.CreateLTextField(Game.playe1.name);
+        JTextField ipForConnection1 = FabryComponents.CreateLTextField(Game.playe1.ipAddress);
 
+        panel2.add(FabryComponents.CreateJLableName("Your Name ", 22));
+        panel2.add(nameUser1);
+        panel2.add(FabryComponents.CreateJLableName("Default IP - 127.0.0.1", 22));
+        panel2.add(ipForConnection1);
+        //End Tab2
+
+        //Begin Tab3
+        JRadioButton easyRadioButton = new JRadioButton();
+        JRadioButton hardRadioButton = new JRadioButton();
+        JRadioButton impossibleRadioButton = new JRadioButton();
+        easyRadioButton.setBackground(new Color(0, 0, 0, 0));
+        hardRadioButton.setBackground(new Color(0, 0, 0, 0));
+        impossibleRadioButton.setBackground(new Color(0, 0, 0, 0));
+
+        easyRadioButton.setActionCommand("easy");
+        hardRadioButton.setActionCommand("hard");
+        impossibleRadioButton.setActionCommand("impossible");
+
+        groupComplexity = new ButtonGroup();
+        groupComplexity.add(easyRadioButton);
+        groupComplexity.add(hardRadioButton);
+        groupComplexity.add(impossibleRadioButton);
+
+        groupComplexity.setSelected(easyRadioButton.getModel(), true);
+
+        ChangeListener changeListenerForComplexity = e -> {
+            JRadioButton radioButton = (JRadioButton) e.getSource();
+            if (radioButton == easyRadioButton && radioButton.isSelected()) {
+                Complexity = "easy";
+            } else if (radioButton == hardRadioButton && radioButton.isSelected()) {
+                Complexity = "hard";
+            } else if (radioButton == impossibleRadioButton && radioButton.isSelected()) {
+                Complexity = "impossible";
+            }
+        };
+        easyRadioButton.addChangeListener(changeListenerForComplexity);
+        hardRadioButton.addChangeListener(changeListenerForComplexity);
+        impossibleRadioButton.addChangeListener(changeListenerForComplexity);
+
+        JTextField nameUser2 = FabryComponents.CreateLTextField(Game.playe1.name);
+        JTextField ipForConnection2 = FabryComponents.CreateLTextField(Game.playe1.ipAddress);
+        JLabel easy = FabryComponents.CreateJLableName("Easy ", 18);
+        JLabel hard = FabryComponents.CreateJLableName("Hard ", 18);
+        JLabel impossible = FabryComponents.CreateJLableName("Impossible ", 18);
+
+        panel3.add(easy);
+        panel3.add(easyRadioButton);
+        panel3.add(hard);
+        panel3.add(hardRadioButton);
+        panel3.add(impossible);
+        panel3.add(impossibleRadioButton);
+        panel3.add(FabryComponents.CreateJLableName("Your Name ", 22));
+        panel3.add(nameUser2);
+        panel3.add(FabryComponents.CreateJLableName("Default IP - 127.0.0.1", 22));
+        panel3.add(ipForConnection2);
+        //End Tab3
+
+        //Прозорий фон в табів
         panel1.setBackground(new Color(255, 255, 255, 10));
         panel1.setBorder(BorderFactory.createEmptyBorder());
-        //на другу панель додаємо просто напис
         panel2.setBackground(new Color(255, 255, 255, 10));
         panel2.setBorder(BorderFactory.createEmptyBorder());
-
-
+        panel3.setBackground(new Color(255, 255, 255, 10));
+        panel3.setBorder(BorderFactory.createEmptyBorder());
 
 
         //додаємо панелі у JTabbedPane
         tabby.addTab("PVPLocal", panel1);
         tabby.addTab("PVP", panel2);
+        tabby.addTab("PVS", panel3);
         // додаємо вкладки у фрейм
-        tabby.setSelectedIndex(0);
+        tabby.setSelectedIndex(IndexCurrentTab);
         int _x = (16) * Game.widthCell;
         int _y = (13) * Game.heightCell;
         JButton jSave = new JButton("Save", new ImageIcon(img));
@@ -492,14 +493,22 @@ public class Settings extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (Game.btnPvpLocal != null)
                     Game.btnPvpLocal = null;
-                if (Game.btnPvS != null)
-                    Game.btnPvS = null;
                 if (Game.btnPvP != null)
                     Game.btnPvP = null;
+                if (Game.btnPvS != null)
+                    Game.btnPvS = null;
                 if (Game.btnSettings != null)
                     Game.btnSettings = null;
-                Game.playe1.name = nameUser.getText();
-                Game.playe1.ipAddress = ipForConnection.getText();
+                if (IndexCurrentTab == 0) {
+                    Game.playe1.name = nameUser.getText();
+                    Game.playe1.ipAddress = ipForConnection.getText();
+                } else if (IndexCurrentTab == 1) {
+                    Game.playe1.name = nameUser1.getText();
+                    Game.playe1.ipAddress = ipForConnection1.getText();
+                } else if (IndexCurrentTab == 2) {
+                    Game.playe1.name = nameUser2.getText();
+                    Game.playe1.ipAddress = ipForConnection2.getText();
+                }
                 Game.jPanel.removeAll();
             }
 
@@ -535,6 +544,7 @@ public class Settings extends JFrame {
         tabby.setBounds(463, 143, 321, 250);
         add(jPanel);
     }
+
 
     private void SetValueIsPressetBtn(boolean v1, boolean v2, boolean v3, boolean v4) {
         isPressedsButtons[0] = v1;
@@ -633,7 +643,7 @@ public class Settings extends JFrame {
     }
 
     private void SetPositionShip(int _x, int _y, int sizeShip) {
-        if(isMousePressed) {
+        if (isMousePressed) {
             if (direction == Direction.RIGHT) {
                 for (int x = 0; x < sizeShip; x++) {
                     if (_x - 2 + x > 9) {
@@ -702,6 +712,7 @@ public class Settings extends JFrame {
             }
         }
     }
+
 
     private boolean CheckPlusSizeShip(int _x, int _y, int sizeShip) {
         if (_x + sizeShip > coordsWaterPolo.x + 10 && direction == Direction.RIGHT)
